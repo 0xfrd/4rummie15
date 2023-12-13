@@ -3,28 +3,125 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Minimalistic Website</title>
+    <title>4 Rummie</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/366f5927c5.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden; /* Hide overflow to prevent scrollbars */
+            background-color: #f0f0f0;
+        }
+
+        #heart-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 24px;
+            color: red;
+            outline: none;
+        }
+
+        .hearts-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none; /* Ignore pointer events for the container */
+        }
+
+        .heart {
+            position: absolute;
+            display: inline-block;
+            transform: translateY(0);
+            transform-origin: 50% 0;
+            animation: fall 2s linear forwards; /* Changed to 'forwards' to keep final state of the animation */
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(120vh);
+            }
+        }
+
+        nav {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        nav a {
+            margin: -5px ;
+        }
+    </style>
 </head>
 <body>
 
 <header>
-    <h1>Your Website</h1>
-    <nav>
-        <ul>
-            <li><a href="page1.html">Untitled #1</a></li>
-            <li><a href="page2.html">Untitled #2</a></li>
-            <li><a href="page3.html">Untitled #3</a></li>
-        </ul>
-    </nav>
-</header>
+    <h1>For Rimsha</h1>
+    <button id="heart-button">❤️</button>
 
+</header>
 <main>
     <section>
-        <h2>Welcome to Your Minimalistic Website!</h2>
-        <p>This is the main content area. Feel free to add your content here.</p>
+        <h2 class="centered-h2">Hey Rummie.</h2>
+        <p></p>
+        <h2 class="centered-h2" style="margin-bottom: 20px;">This is for you.</h2>
+        <p></p>
+        <p></p>
+        <nav>
+        
+            <a href="page1.html"><i class="fa-solid fa-envelope"></i> Untitled #1</a>
+            <p></p>
+            <a href="page2.html"><i class="fa-solid fa-envelope"></i> Untitled #2</a>
+            <p></p>
+            <a href="page3.html"><i class="fa-solid fa-envelope"></i> Untitled #3</a>
+        </nav>
     </section>
 </main>
+
+<div class="hearts-container"></div>
+
+<script>
+    const heartButton = document.getElementById('heart-button');
+    const heartsContainer = document.querySelector('.hearts-container');
+
+    heartButton.addEventListener('click', () => {
+        createHearts(50); // You can adjust the number of hearts here
+    });
+
+    function createHearts(number) {
+        for (let i = 0; i < number; i++) {
+            createHeart();
+        }
+    }
+
+    function createHeart() {
+        const heart = document.createElement('span');
+        heart.className = 'heart';
+        heart.innerHTML = '❤️';
+
+        const positionX = Math.random() * window.innerWidth;
+        const positionY = -20; // Start slightly above the top of the screen
+        const animationDuration = (Math.random() + 1) * 2; // Random duration between 2 and 4 seconds
+
+        heart.style.left = positionX + 'px';
+        heart.style.top = positionY + 'px';
+        heart.style.animationDuration = animationDuration + 's';
+
+        heartsContainer.appendChild(heart);
+
+        heart.addEventListener('animationend', () => {
+            heart.remove();
+        });
+    }
+</script>
 
 </body>
 </html>
