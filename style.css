@@ -1,14 +1,20 @@
 body {
     margin: 0;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Quicksand', sans-serif;
 }
 
 header {
-    background-color: #333;
-    color: #fff;
+    background-color: #f3efef;
+    color: #2c2b2b;
     padding: 10px;
     text-align: center;
 }
+
+.centered-h2 {
+    text-align: center;
+}
+
+
 
 header h1 {
     margin: 0;
@@ -27,7 +33,7 @@ nav ul li {
 
 nav a {
     text-decoration: none;
-    color: #fff;
+    color: #333;
     font-weight: bold;
 }
 
